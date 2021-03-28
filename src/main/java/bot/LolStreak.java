@@ -73,7 +73,7 @@ public class LolStreak extends ListenerAdapter {
                 i++;
             }
         }
-        return typeOfStreak + " gracza " + account.getName() + " wynosi " + streakValue;
+        return  account.getName() + " is on a " + streakValue + " game " + typeOfStreak;
 
     }
 

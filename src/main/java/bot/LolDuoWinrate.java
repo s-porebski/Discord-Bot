@@ -28,18 +28,18 @@ public class LolDuoWinrate extends ListenerAdapter {
             try {
                 account1 = getAccountId(names[0]);
             } catch (NotFoundException notFoundException) {
-                e.getChannel().sendMessage("Gracz o nazwie " + names[0] + " nie istnieje").queue();
+                e.getChannel().sendMessage("Player name " + names[0] + " does not exist").queue();
             }
             ArrayList<Match> matches1 = getMatchList(account1);
             Account account2 = null;
             try {
                 account2 = getAccountId(names[1]);
             } catch (NotFoundException notFoundException) {
-                e.getChannel().sendMessage("Gracz o nazwie " + names[1] + " nie istnieje").queue();            }
+                e.getChannel().sendMessage("Player name " + names[1] + " does not exist").queue();            }
             ArrayList<Match> matches2 = getMatchList(account2);
             ArrayList<Match> duoMatches = getMatchList(matches1, matches2);
             if (duoMatches.size() == 0) {
-                e.getChannel().sendMessage(account1.getName() + " i " + account2.getName() + " nie grali razem duo").queue();
+                e.getChannel().sendMessage(account1.getName() + " and " + account2.getName() + " did not play together").queue();
             } else {
                String texToPrint =  checkDuoWinrate(account1, account2, duoMatches);
                e.getChannel().sendMessage(texToPrint).queue();
@@ -77,7 +77,7 @@ public class LolDuoWinrate extends ListenerAdapter {
         }
         Double winRatio = Double.valueOf(Double.valueOf(wins)/games*100);
         String winRatioFormatted = String.format("%.1f", winRatio);
-        return account1.getName() + " i " + account2.getName() + " " + wins + "W-" + loses + "L Win rate " + winRatioFormatted + "%";
+        return account1.getName() + " and " + account2.getName() + " " + wins + "W-" + loses + "L Win rate " + winRatioFormatted + "%";
 
     }
 

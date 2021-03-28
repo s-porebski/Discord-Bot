@@ -26,13 +26,13 @@ public class LolRanking extends ListenerAdapter {
                 String name = commandLine.substring(5);
                 try {
                     summonersDatabase.insertSummonerIdToDatabase(name);
-                    e.getChannel().sendMessage("Dodano gracza " + name + " do rankingu").queue();
+                    e.getChannel().sendMessage("Player " + name + " has been added to the ranking").queue();
                 } catch (NotFoundException notFoundException) {
-                    e.getChannel().sendMessage("Gracz o nazwie " + name + " nie istnieje").queue();
+                    e.getChannel().sendMessage("Player name " + name + " does not exist").queue();
                 }
 
             } else {
-                e.getChannel().sendMessage("Nie masz odpowiednich uprawnień").queue();
+                e.getChannel().sendMessage("You do not have permission").queue();
             }
 
         } else if ("!remove".equals(commandLineArray[0]) && checkAdmin(e.getMember())) {
@@ -41,10 +41,10 @@ public class LolRanking extends ListenerAdapter {
                 try {
                     summonersDatabase.deleteSummonerIdFromDatabase(name);
                 } catch (NotFoundException notFoundException) {
-                    e.getChannel().sendMessage("Gracz o nazwie " + name + " nie istnieje").queue();
+                    e.getChannel().sendMessage("Player name " + name + " does not exist").queue();
                 }
             } else {
-            e.getChannel().sendMessage("Nie masz odpowiednich uprawnień").queue();
+            e.getChannel().sendMessage("You do not have permission").queue();
         }
 
         } else if ("!ranking".equals(commandLine)) {
