@@ -1,15 +1,18 @@
 # Discord-Bot
 [![CodeFactor](https://www.codefactor.io/repository/github/s-porebski/discord-bot/badge)](https://www.codefactor.io/repository/github/s-porebski/discord-bot)
 
-Java Discord Bot that displays League of Legends ranking for specific players.
+## Overview
+Java Discord Bot that displays League of Legends ranking for specific players. 
 
-# Commands
-!add <summoner name>
-  
-!remove <summoner name>
-  
-!ranking
+The bot uses the Riot API and makes sure not to exceed the limit of API requests.
 
-!streak <summoner name>
+## Commands
+`!add <summoner-name>` - Adds the player to the ranking database
+
+`!remove <summoner-name>`  - Removes the player from the ranking database
   
-!duo <summoner name>/<summoner name>
+`!ranking` - Shows the ranking of the added players
+
+`!streak <summoner-name>`  - Displays the win or loss streak on for the specified player
+
+`!duo <summoner-name>/<summoner-name>` - Displays the win ratio for specific players
