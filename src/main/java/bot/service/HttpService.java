@@ -28,7 +28,6 @@ final public class HttpService {
         String[] LimitCountArray = response.headers().allValues("X-App-Rate-Limit-Count").get(0).split("(:|,)");
         int counterSecond = Integer.parseInt(LimitCountArray[0]);
         int counter2Minutes = Integer.parseInt(LimitCountArray[2]);
-        System.out.println(counter2Minutes);
         if (counter2Minutes == 1) {
            counterLimit = Instant.now();
         }
