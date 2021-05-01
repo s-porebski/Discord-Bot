@@ -151,7 +151,8 @@ public class LolDuoWinrate extends ListenerAdapter {
         int beginIndex = 0;
         ArrayList<Match> arrayListMatches = new ArrayList<>();
         boolean afterTimestamp = true;
-        while (afterTimestamp) {
+        boolean endOfList = false;
+        while (afterTimestamp && !endOfList) {
             String uri = "https://eun1.api.riotgames.com/lol/match/v4/matchlists/by-account/"
                     + account.getAccountId() + "?queue=420&beginIndex=" + beginIndex + "&api_key=" + RIOT_API_TOKEN;
             HttpResponse<String> response = HttpService.GetResponse(uri);
@@ -169,6 +170,9 @@ public class LolDuoWinrate extends ListenerAdapter {
                 }
             }
             beginIndex += 100;
+            if (matchesJson.get("totalGames").getAsInt() <= beginIndex) {
+                endOfList = true;
+            }
         }
         return arrayListMatches;
 
