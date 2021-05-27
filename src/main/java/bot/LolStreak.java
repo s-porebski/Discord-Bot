@@ -53,7 +53,9 @@ public class LolStreak extends ListenerAdapter {
             Boolean streak = true;
             while (i < matches.size() && streak) {
                 JsonObject match = getMatchJson(matches.get(i));
-                if (checkWin(account, match) && !checkRemake(match)) {
+                if (checkRemake(match)) {
+                }
+                else if (checkWin(account, match)) {
                     streakValue++;
                 } else {
                     streak = false;
@@ -65,7 +67,9 @@ public class LolStreak extends ListenerAdapter {
             Boolean streak = true;
             while (i < matches.size() && streak) {
                 JsonObject match = getMatchJson(matches.get(i));
-                if (!checkWin(account, match) && !checkRemake(match)) {
+                if (checkRemake(match)) {
+                }
+                else if (!checkWin(account, match)) {
                     streakValue++;
                 } else {
                     streak = false;
